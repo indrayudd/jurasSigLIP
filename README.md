@@ -150,29 +150,10 @@ Each folder in `val/` contains one image with multiple captions. The different c
 
 ## How to run
 
-Open `jurasSigLIP.ipynb` and run the cells in order. Update the dataset paths to your local setup and ensure a CUDA-capable GPU is available for mixed-precision training. You must provide the two JSON files (`grefs(unc).json` and `instances.json`) and a folder with all images with segmentation data named `gref_images` as referenced in the notebook paths.
+Open `jurasSigLIP.ipynb` and run the cells in order. Update the dataset paths to your local setup and ensure a CUDA-capable GPU is available for mixed-precision training. You must provide the two JSON files (`grefs(unc).json` and `instances.json`) and a folder with all segmented images named `gref_images` as referenced in the notebook paths.
 
 ## References
 
-```bibtex
-@inproceedings{GRES,
-  title={{GRES}: Generalized Referring Expression Segmentation},
-  author={Liu, Chang and Ding, Henghui and Jiang, Xudong},
-  booktitle={CVPR},
-  year={2023}
-}
-
-@article{GREC,
-  title={{GREC}: Generalized Referring Expression Comprehension},
-  author={He, Shuting and Ding, Henghui and Liu, Chang and Jiang, Xudong},
-  journal={arXiv preprint arXiv:2308.16182},
-  year={2023}
-}
-
-@article{kamath2021mdetr,
-  title={MDETR - Modulated Detection for End-to-End Multi-Modal Understanding},
-  author={Kamath, Aishwarya and Singh, Mannat and LeCun, Yann and Synnaeve, Gabriel and Misra, Ishan and Carion, Nicolas},
-  journal={arXiv preprint arXiv:2104.12763},
-  year={2021}
-}
-```
+- Liu, Chang, Henghui Ding, and Xudong Jiang. “GRES: Generalized Referring Expression Segmentation.” In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023.
+- He, Shuting, Henghui Ding, Chang Liu, and Xudong Jiang. “GREC: Generalized Referring Expression Comprehension.” arXiv preprint arXiv:2308.16182, 2023.
+- Kamath, Aishwarya, Mannat Singh, Yann LeCun, Gabriel Synnaeve, Ishan Misra, and Nicolas Carion. “MDETR: Modulated Detection for End-to-End Multi-Modal Understanding.” arXiv preprint arXiv:2104.12763, 2021.
