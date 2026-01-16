@@ -150,7 +150,7 @@ Each folder in `val/` contains one image with multiple captions. The different c
 
 ## How to run
 
-Open `jurasSigLIP.ipynb` and run the cells in order. Update the dataset paths to your local setup and ensure a CUDA-capable GPU is available for mixed-precision training. You must provide the two JSON files (`grefs(unc).json` and `instances.json`) and a folder with all segmented images named `gref_images` as referenced in the notebook paths.
+Open `jurasSigLIP.ipynb` and run the cells in order. Update the dataset paths to your local setup and ensure a CUDA-capable GPU is available for mixed-precision training. You must provide the two JSON files (`grefs(unc).json` and `instances.json`) and a folder with all images with segmentation data named `gref_images` as referenced in the notebook paths.
 
 ## References
 
