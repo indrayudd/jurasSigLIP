@@ -1,0 +1,40 @@
+graph TD
+    subgraph Inputs
+    IMG[Input Image] --> V_PROC[Image Processor]
+    TXT[Input Caption] --> T_TOK[Tokenizer]
+    end
+
+    subgraph Vision_Branch_DINOv3
+    V_PROC --> V_BB["DINOv3 Backbone<br/>(LoRA Adapted)"]
+    V_BB --> V_TOK["Patch Tokens<br/>(Local Features)"]
+    V_BB --> V_CLS["CLS Token<br/>(Global Feature)"]
+    end
+
+    subgraph Text_Branch_SigLIP2
+    T_TOK --> T_BB["SigLIP2 Text Model<br/>(LoRA Adapted)"]
+    T_BB --> T_FEAT[Text Features]
+    T_FEAT --> T_PROJ[Down Projection]
+    T_PROJ --> T_SEQ[Text Sequence Tokens]
+    T_PROJ --> T_GLO[Global Text Feature]
+    end
+
+    subgraph Fusion_Module
+    V_TOK -- Query --> X_ATTN[Cross Attention]
+    T_SEQ -- Key/Value --> X_ATTN
+    X_ATTN --> V_CTX[Contextualized Features]
+    V_TOK -- Residual --> ADD((+))
+    V_CTX --> ADD
+    end
+
+    subgraph Outputs
+    ADD --> SEG_HEAD["Segmentation Head<br/>(MLP + Upsample)"]
+    SEG_HEAD --> MASK[Segmentation Mask Logits]
+    
+    V_CLS -.-> CONT_LOSS[Contrastive Loss]
+    T_GLO -.-> CONT_LOSS
+    end
+
+    style Vision_Branch_DINOv3 fill:#e1f5fe,stroke:#01579b
+    style Text_Branch_SigLIP2 fill:#fff3e0,stroke:#e65100
+    style Fusion_Module fill:#f3e5f5,stroke:#4a148c
+    style Outputs fill:#e8f5e9,stroke:#1b5e20
